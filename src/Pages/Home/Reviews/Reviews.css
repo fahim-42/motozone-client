@@ -1,0 +1,14 @@
+.review-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+/* Mobile responsive */
+@media only screen and (max-width:688px) {
+    .review-container{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+.review{
+    /* background-color: rgb(226, 241, 241); */
+}
