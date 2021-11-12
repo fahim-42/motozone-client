@@ -10,9 +10,10 @@ import MyOrders from '../MyOrders/MyOrders';
 import ManageOrders from '../ManageOrders/ManageOrders';
 import PostReview from '../PostReview/PostReview';
 import AddProduct from '../AddProduct/AddProduct';
+import ManageProducts from '../ManageProducts/ManageProducts';
 
 const Dashboard = () => {
-    const { user } = useAuth();
+    const { admin } = useAuth();
     let { path, url } = useRouteMatch();
     return (
         <div className="d-flex">
@@ -24,15 +25,17 @@ const Dashboard = () => {
 
                         <Nav.Link as={HashLink} className="nav-link link-dark" to={`${url}/payment`}>Payment</Nav.Link>
 
-                        <Nav.Link as={HashLink} className="nav-link link-dark" to={`${url}/admin`}>Set Admin</Nav.Link>
+                        {admin && <Nav.Link as={HashLink} className="nav-link link-dark" to={`${url}/admin`}>Make Admin</Nav.Link>}
 
-                        <Nav.Link as={HashLink} className="nav-link link-dark" to={`${url}/my_orders`}>My Orders</Nav.Link>
+                        {!admin && <Nav.Link as={HashLink} className="nav-link link-dark" to={`${url}/my_orders`}>My Orders</Nav.Link>}
 
-                        <Nav.Link as={HashLink} className="nav-link link-dark" to={`${url}/manage_orders`}>Manage Orders</Nav.Link>
-                        
+                        {admin && <Nav.Link as={HashLink} className="nav-link link-dark" to={`${url}/manage_orders`}>Manage Orders</Nav.Link>}
+
                         <Nav.Link as={HashLink} className="nav-link link-dark" to={`${url}/review`}>Review Product</Nav.Link>
 
-                        <Nav.Link as={HashLink} className="nav-link link-dark" to={`${url}/add_product`}>Add New Product</Nav.Link>
+                        {admin && <Nav.Link as={HashLink} className="nav-link link-dark" to={`${url}/manage_products`}>Manage Products</Nav.Link>}
+
+                        {admin && <Nav.Link as={HashLink} className="nav-link link-dark" to={`${url}/add_product`}>Add Product</Nav.Link>}
                     </ul>
                 </div>
             </div>
@@ -55,6 +58,9 @@ const Dashboard = () => {
                     </Route>
                     <Route exact path={`${path}/review`}>
                         <PostReview></PostReview>
+                    </Route>
+                    <Route exact path={`${path}/manage_products`}>
+                        <ManageProducts></ManageProducts>
                     </Route>
                     <Route exact path={`${path}/add_product`}>
                         <AddProduct></AddProduct>

@@ -4,7 +4,6 @@ import Button from 'react-bootstrap/Button';
 
 const MakeAdmin = () => {
     const [email, setEmail] = useState('');
-    const [success, setSuccess] = useState(false);
 
     const handleOnBlur = e => {
         setEmail(e.target.value);
@@ -25,7 +24,8 @@ const MakeAdmin = () => {
             .then(data => {
                 if (data.modifiedCount) {
                     console.log(data);
-                    setSuccess(true);
+                    setEmail('');
+                    alert('New admin successfully created.');
                 }
             })
         e.preventDefault()
