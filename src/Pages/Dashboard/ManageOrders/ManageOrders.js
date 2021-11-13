@@ -4,7 +4,32 @@ import useAuth from '../../../hooks/useAuth';
 
 const ManageOrders = () => {
     const { user } = useAuth();
+    const [status, setStatus] = useState([]);
     const [manageOrder, setManageOrder] = useState([]);
+
+    const handleUpdate = id => {
+        const productStatus = 'Shipped';
+        setStatus(productStatus);
+
+        const isShipped = { status };
+
+        const url = `http://localhost:3030/orders/${id}`;
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(isShipped)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    alert('Order Status updated');
+                    /* const remainingOrders = manageOrder.filter(order => order.status !== 'Pending');
+                    setManageOrder(remainingOrders); */
+                }
+            })
+    }
 
     useEffect(() => {
         const url = 'http://localhost:3030/orders';
@@ -56,7 +81,9 @@ const ManageOrders = () => {
                                 <td>{order.price}</td>
                                 <td>{order.address}</td>
                                 <td>{order.status}</td>
-                                <button className="bg-success text-white btn btn-danger py-1 my-1">Update</button>
+
+                                <button onClick={() => handleUpdate(order._id)} className="bg-success text-white btn btn-danger py-1 my-1">Update</button>
+
                                 <button onClick={() => handleDelete(order._id)} className="bg-danger text-white btn btn-danger ms-2 py-1 my-1">Delete</button>
                             </tr>))
                         }

@@ -30,7 +30,7 @@ const Purchase = () => {
         const price = priceRef.current.value;
         const address = addressRef.current.value;
         const mobile = mobileRef.current.value;
-        const status = "pending";
+        const status = "Pending";
 
         const purchaseInfo = { name, email, product, price, address, mobile, status };
 

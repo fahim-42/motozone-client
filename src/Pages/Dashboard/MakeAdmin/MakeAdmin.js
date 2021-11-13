@@ -11,8 +11,8 @@ const MakeAdmin = () => {
 
     const handleAdminSubmit = e => {
         const user = { email };
-        const url = 'http://localhost:3030/users/admin';
 
+        const url = 'http://localhost:3030/users/admin';
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -28,7 +28,7 @@ const MakeAdmin = () => {
                     alert('New admin successfully created.');
                 }
             })
-        e.preventDefault()
+        e.preventDefault();
     }
     return (
         <div className="col-10 col-lg-5 mx-auto my-5 border bg-light border rounded-3 shadow-lg">
