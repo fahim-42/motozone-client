@@ -104,6 +104,7 @@ const Purchase = () => {
                 <Form.Group className="mb-1" controlId="formBasicAddress">
                     <Form.Label>Current Address :</Form.Label>
                     <Form.Control
+                        required
                         type="text"
                         ref={addressRef}
                         placeholder="Local area, street name etc." />
@@ -112,6 +113,7 @@ const Purchase = () => {
                 <Form.Group className="mb-1" controlId="formBasicMobile">
                     <Form.Label>Mobile number :</Form.Label>
                     <Form.Control
+                        required
                         type="number"
                         ref={mobileRef}
                         placeholder="Your mobile number" />
