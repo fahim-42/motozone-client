@@ -16,7 +16,8 @@ const AddProduct = () => {
 
         const newProduct = { name, image, price, description }
 
-        const url = 'http://localhost:3030/products';
+        // const url = 'http://localhost:3030/products';
+        const url = 'https://glacial-castle-62029.herokuapp.com/products';
         fetch(url, {
             method: 'POST',
             headers: {

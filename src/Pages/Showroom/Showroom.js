@@ -5,7 +5,8 @@ import './Showroom.css';
 const Showroom = () => {
     const [product, setProduct] = useState([]);
     useEffect(() => {
-        const url = 'http://localhost:3030/products';
+        // const url = 'http://localhost:3030/products';
+        const url = 'https://glacial-castle-62029.herokuapp.com/products';
         fetch(url)
             .then(res => res.json())
             .then(data => setProduct(data.products));

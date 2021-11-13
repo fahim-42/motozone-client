@@ -18,7 +18,7 @@ const Dashboard = () => {
     return (
         <div className="d-flex">
             <div className="col-4 col-lg-2">
-                <div className="d-flex flex-column flex-shrink-0 p-3 bg-light">
+                <div className="d-flex flex-column flex-shrink-0 p-3 bg-light h-100">
                     <Navbar.Brand as={Link} className="d-flex align-items-center m-0 p-0 link-dark text-decoration-none fs-3" to={`${url}`}>Dashboard</Navbar.Brand>
                     <hr></hr>
                     <ul className="nav nav-pills flex-column mb-auto">
