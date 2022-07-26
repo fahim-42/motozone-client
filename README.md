@@ -2,7 +2,7 @@
 
 This project was built using css, react, react-bootstrap, react-router-dom, react-router-hash-link, node.js, express.js, mongodb and firebase.
 
-Visit [MotoZone](https://.web.app/).
+Visit [MotoZone](https://motozone-client.firebaseapp.com/).
 
 ## Project Features
 
