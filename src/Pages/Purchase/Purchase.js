@@ -55,12 +55,11 @@ const Purchase = () => {
         e.preventDefault();
     }
     return (
-        <div className="col-lg-6 my-2 mx-auto border-0 rounded-3">
-            <div className="text-center text-danger fst-italic m-0 py-3">
+        <div className="bg-dark py-4">
+            <div className="text-center fst-italic bg-dark text-warning m-0 py-2">
                 <h2>Purchase Information</h2>
             </div>
-
-            <Form onSubmit={handlePurchase} className="row g-3 mt-3 mx-5 p-3 border border-2 shadow-lg">
+            <Form onSubmit={handlePurchase} className="bg-white col-lg-5 row g-4 rounded-3 shadow-sm mx-auto my-3 px-4 pb-4 ">
                 <Form.Group className="mb-1" controlId="formBasicName">
                     <Form.Label>Username :</Form.Label>
                     <Form.Control

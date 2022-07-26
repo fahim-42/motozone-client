@@ -8,22 +8,22 @@ import useAuth from './../../../hooks/useAuth';
 const Header = () => {
     const { user, logout } = useAuth();
     return (
-        <div>
-            <Navbar bg="dark" variant="dark" sticky="top" collapseOnSelect expand="lg">
-                <Container>
+        <div >
+            <Navbar bg="dark" variant="dark" sticky="top" scollapseOnSelect expand="lg">
+                <Container className="border-bottom border-white pb-1">
                     <Navbar.Brand as={Link} to="/home">MotoZone</Navbar.Brand>
                     <Navbar.Toggle />
                     <Navbar.Collapse className="justify-content-end">
-                        <Nav.Link as={HashLink} to="/home">Home</Nav.Link>
-                        <Nav.Link as={HashLink} to="/showroom">Explore Showroom</Nav.Link>
+                        <Nav.Link as={HashLink} to="/home" className="text-white">Home</Nav.Link>
+                        <Nav.Link as={HashLink} to="/showroom" className="text-white">Showroom</Nav.Link>
                         {user.email &&
-                            <Nav.Link as={HashLink} to="/dashboard">Dashboard</Nav.Link>}
+                            <Nav.Link as={HashLink} to="/dashboard" className="text-white">Dashboard</Nav.Link>}
                         {user.email ?
-                            <Nav.Link as={HashLink} onClick={logout} to="/login">Logout</Nav.Link> :
-                            <Nav.Link as={HashLink} to="/login">Login</Nav.Link>}
+                            <Nav.Link as={HashLink} onClick={logout} to="/login" className="text-white">Logout</Nav.Link> :
+                            <Nav.Link as={HashLink} to="/login" className="text-white">Login</Nav.Link>}
 
                         {user.email &&
-                            <Navbar.Text>
+                            <Navbar.Text className="text-warning">
                                 Hi, {user?.displayName}
                             </Navbar.Text>}
                     </Navbar.Collapse>

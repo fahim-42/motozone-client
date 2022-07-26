@@ -6,7 +6,7 @@ import Reviews from '../Reviews/Reviews';
 
 const Home = () => {
     return (
-        <div>
+        <div className="bg-dark">
             <Banner></Banner>
             <Products></Products>
             <Reviews></Reviews>

@@ -12,18 +12,18 @@ const Showroom = () => {
             .then(data => setProduct(data.products));
     }, []);
     return (
-        <div>
-            <div className="text-center text-primary fst-italic m-0 py-3">
-                <h2>Explore Showroom</h2>
+        <div className="bg-dark">
+            <div className="text-center fst-italic bg-dark text-warning m-0 py-3">
+                <h1>Our Collections</h1>
             </div>
-            <div className="showroom-container mx-3 mb-5">
+            <div className="showroom-container mx-3 pb-4">
                 {
                     product?.map((pd) => (
-                        <div key={pd._id} className="showroom bg-light mx-3 mb-3 border border-warning rounded-3 shadow-sm">
-                            <h2 className="text-center fw-bold fst-italic mt-3">{pd.name}</h2>
-                            <img className="w-80 border border-0 p-1 mb-1" src={pd.image} alt="not found" />
-                            <h5 className="px-4 mb-3 fw-bold fst-italic mb-3">Price: {pd.price}tk</h5>
+                        <div key={pd._id} className="showroom bg-white mx-3 mb-3 rounded-3 shadow-lg">
+                            <img className="w-80 border border-0 px-4" src={pd.image} alt="not found" />
+                            <h2 className="text-center fw-bold fst-italic m-3">{pd.name}</h2>
                             <p className="px-4 mb-3">{pd.description}</p>
+                            <h5 className="px-4 mb-3 fw-bold fst-italic mb-3">Price: {pd.price}tk</h5>
                             <Link to={`/purchase/${pd._id}`}>
                                 <button className="btn btn-warning fw-bold mb-4 ms-4">Buy Now</button>
                             </Link>

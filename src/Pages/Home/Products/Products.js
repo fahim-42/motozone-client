@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import './Products.css';
 
@@ -13,20 +14,21 @@ const Products = () => {
     }, []);
     return (
         <div>
-            <div className="text-center fst-italic bg-dark text-white-50 m-0 py-3">
-                <h2>All Products</h2>
+            <div className="text-center fst-italic bg-dark text-warning m-0 py-5">
+                <h1>New Arrivals !!!</h1>
             </div>
-            <div className="product-container mx-3 my-5">
+            <div className="product-container px-5 mx-5">
                 {
-                    product?.slice(0,6).map((pd) => (
-                        <div key={pd._id} className="product bg-light mx-3 mb-3 border border-warning rounded-3 shadow-lg">
-                            <h2 className="text-center fw-bold fst-italic mt-3">{pd.name}</h2>
-                            <img className="w-80 border border-0 p-1 mb-1" src={pd.image} alt="not found" />
-                            <h5 className="px-4 mb-3 fw-bold fst-italic mb-3">Price: {pd.price}tk</h5>
-                            <p className="px-4 mb-3">{pd.description}</p>
-                            <Link to={`/purchase/${pd._id}`}>
-                                <button className="btn btn-warning fw-bold mb-4 ms-4">Buy Now</button>
-                            </Link>
+                    product?.slice(0, 6).map((pd) => (
+                        <div key={pd._id} className="product bg-light mx-lg-3 mb-3 border-0 rounded shadow shadow-lg">
+                            <img className="w-70" src={pd.image} alt="not found" />
+                            <h3 className="fw-bold text-center px-4 pb-2">{pd.name}</h3>
+                            <div className="d-flex align-items-center pb-3 text-center">
+                                <h6 className="col-6 fst-small ps-4">Price: {pd.price}tk</h6>
+                                <Link to="/showroom" className="col-6">
+                                    <Button variant="link fw-bold" size="sm">Learn more</Button>
+                                </Link>
+                            </div>
                         </div>
                     ))
                 }
