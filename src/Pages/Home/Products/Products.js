@@ -3,6 +3,10 @@ import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import './Products.css';
 
+// animation
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 const Products = () => {
     const [product, setProduct] = useState([]);
     useEffect(() => {
@@ -12,15 +16,20 @@ const Products = () => {
             .then(res => res.json())
             .then(data => setProduct(data.products));
     }, []);
+
+    //animation
+    useEffect(() => {
+        AOS.init();
+    });
     return (
         <div>
             <div className="text-center fst-italic bg-dark text-warning m-0 py-5">
-                <h1>New Arrivals !!!</h1>
+                <h1 data-aos="fade-down" data-aos-duration="500">New Arrivals !!!</h1>
             </div>
             <div className="product-container px-5 mx-5">
                 {
                     product?.slice(0, 6).map((pd) => (
-                        <div key={pd._id} className="product bg-light mx-lg-3 mb-3 border-0 rounded shadow shadow-lg">
+                        <div key={pd._id} className="product bg-light mx-lg-3 mb-3 border-0 rounded shadow shadow-lg" data-aos="fade-up" data-aos-duration="2000">
                             <img className="w-70" src={pd.image} alt="not found" />
                             <h3 className="fw-bold text-center px-4 pb-2">{pd.name}</h3>
                             <div className="d-flex align-items-center pb-3 text-center">

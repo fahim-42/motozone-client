@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 
+// animation
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 const About = () => {
+    //animation
+    useEffect(() => {
+        AOS.init();
+    })
     return (
         <div className="col-lg-10 text-white mx-auto pb-5">
             <div className="text-center fst-italic bg-dark text-warning m-0 py-5">
-                <h1>About Us</h1>
+                <h1 data-aos="fade-down" data-aos-duration="500">About Us</h1>
             </div>
 
             <div className="d-flex flex-wrap">
@@ -27,7 +35,7 @@ const About = () => {
                     </div>
 
                 </div>
-                <div className="col-lg-4 col-sm-12 bg-primary border-5 rounded-3 mx-auto">
+                <div className="col-lg-4 col-sm-12 bg-primary border-5 rounded-3 mx-auto" data-aos="fade-left" data-aos-duration="1000">
                     <Form className="mx-3 px-3 mt-3">
                         <Form.Text className="mb-1 text-dark fs-5 fw-bolder fst-italic">
                             Keep up-to-date with our newsletter !?

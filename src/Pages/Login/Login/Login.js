@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button'
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
 import useAuth from './../../../hooks/useAuth';
+
+// animation
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Login = () => {
     const [loginData, setLoginData] = useState({});
@@ -26,9 +30,14 @@ const Login = () => {
     const handleGoogleSignIn = () => {
         signInWithGoogle(location, history)
     }
+    
+    //animation
+    useEffect(() => {
+        AOS.init();
+    })
     return (
         <div className="bg-dark py-5">
-            <div className="bg-light col-lg-4 col-sm-6 mx-auto border rounded-3 shadow-lg p-3">
+            <div className="bg-light col-lg-4 col-sm-6 mx-auto border rounded-3 shadow-lg p-3" data-aos="zoom-out-down" data-aos-duration="1500">
                 <h3 className="fw-light fst-italic text-center my-3">User Login</h3>
                 <Form className="px-3" onSubmit={handleLoginSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">

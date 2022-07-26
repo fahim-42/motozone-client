@@ -4,6 +4,10 @@ import Button from 'react-bootstrap/Button'
 import { useParams } from 'react-router';
 import useAuth from './../../hooks/useAuth';
 
+// animation
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 const Purchase = () => {
     const { id } = useParams();
     const { user } = useAuth();
@@ -54,12 +58,17 @@ const Purchase = () => {
 
         e.preventDefault();
     }
+    
+    //animation
+    useEffect(() => {
+        AOS.init();
+    })
     return (
         <div className="bg-dark py-4">
             <div className="text-center fst-italic bg-dark text-warning m-0 py-2">
-                <h2>Purchase Information</h2>
+                <h2 data-aos="fade-down" data-aos-duration="500">Purchase Information</h2>
             </div>
-            <Form onSubmit={handlePurchase} className="bg-white col-lg-5 row g-4 rounded-3 shadow-sm mx-auto my-3 px-4 pb-4 ">
+            <Form onSubmit={handlePurchase} className="bg-white col-lg-5 row g-4 rounded-3 shadow-sm mx-auto my-3 px-4 pb-4" data-aos="zoom-in-up" data-aos-duration="2000">
                 <Form.Group className="mb-1" controlId="formBasicName">
                     <Form.Label>Username :</Form.Label>
                     <Form.Control
