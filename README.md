@@ -1,6 +1,6 @@
 # MotoZone - Motorcycle Shop
 
-This project was built using css, react, react-bootstrap, react-router-dom, react-router-hash-link, node.js, express.js, mongodb and firebase.
+This project was built using html, css, react, react-bootstrap, react-router-dom, react-router-hash-link, node.js, express.js, mongodb and firebase.
 
 Visit live-site: [MotoZone](https://motozone-client.firebaseapp.com/).
 
