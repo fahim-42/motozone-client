@@ -2,9 +2,9 @@
 
 This project was built using css, react, react-bootstrap, react-router-dom, react-router-hash-link, node.js, express.js, mongodb and firebase.
 
-Visit live-site:[MotoZone](https://motozone-client.firebaseapp.com/).
+Visit live-site: [MotoZone](https://motozone-client.firebaseapp.com/).
 
-Server-side:[MotoZone Server](https://github.com/fahim-42/motozone-server).
+Server-side: [MotoZone Server](https://github.com/fahim-42/motozone-server).
 
 Database-link: [Database-Sample](https://glacial-castle-62029.herokuapp.com/products).
 
