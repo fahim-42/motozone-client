@@ -30,7 +30,7 @@ const Products = () => {
                 {
                     product?.slice(0, 6).map((pd) => (
                         <div key={pd._id} className="product bg-light mx-lg-3 mb-3 border-0 rounded shadow shadow-lg" data-aos="fade-up" data-aos-duration="2000">
-                            <img className="w-70" src={pd.image} alt="not found" />
+                            <img className="w-70" src={`data:image/png;base64,${pd.image}`} alt="not found" />
                             <h3 className="fw-bold text-center px-4 pb-2">{pd.name}</h3>
                             <div className="d-flex align-items-center pb-3 text-center">
                                 <h6 className="col-6 fst-small ps-4">Price: {pd.price}tk</h6>

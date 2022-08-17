@@ -9,7 +9,7 @@ const Header = () => {
     const { user, logout } = useAuth();
     return (
         <div >
-            <Navbar bg="dark" variant="dark" sticky="top" scollapseOnSelect expand="lg">
+            <Navbar bg="dark" variant="dark" sticky="top" scollapseonselect="true" expand="lg">
                 <Container className="border-bottom border-white pb-1">
                     <Navbar.Brand as={Link} to="/home">MotoZone</Navbar.Brand>
                     <Navbar.Toggle />
