@@ -27,7 +27,7 @@ const Dashboard = () => {
 
                         {admin && <Nav.Link as={HashLink} className="nav-link link-dark" to={`${url}/admin`}>Make Admin</Nav.Link>}
 
-                        {!admin && <Nav.Link as={HashLink} className="nav-link link-dark" to={`${url}/my_orders`}>My Orders</Nav.Link>}
+                        <Nav.Link as={HashLink} className="nav-link link-dark" to={`${url}/my_orders`}>My Orders</Nav.Link>
 
                         {admin && <Nav.Link as={HashLink} className="nav-link link-dark" to={`${url}/manage_orders`}>Manage Orders</Nav.Link>}
 

@@ -1,8 +1,16 @@
 import React, { useState, useRef } from 'react';
 import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button'
+import Modal from 'react-bootstrap/Modal';
 
 const AddProduct = () => {
+    //modal actions
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    //catch data
     const [name, setName] = useState('');
     const [image, setImage] = useState(null);
     const [price, setPrice] = useState();
@@ -33,7 +41,7 @@ const AddProduct = () => {
 
         // const url = 'http://localhost:3030/products';
         const url = 'https://glacial-castle-62029.herokuapp.com/products';
-        
+
         /*fetch(url, {
             method: 'POST',
             headers: {
@@ -49,7 +57,8 @@ const AddProduct = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
-                    alert('New Product Added Successfully.');
+                    // alert('New Product Added Successfully.');
+                    setShow(true);
                     e.target.reset();
                 }
             })
@@ -70,7 +79,7 @@ const AddProduct = () => {
                     <Form.Label>Product image url :</Form.Label>
                     <Form.Control
                         type="file"
-                        accept="image/png, image/jpg, image/jpeg"
+                        accept="image/*"
                         // ref={imageRef}
                         onChange={e => setImage(e.target.files[0])}
                         placeholder="Product image" />
@@ -93,6 +102,16 @@ const AddProduct = () => {
                 </Form.Group>
                 <Button variant="warning" type="submit">Add Product</Button>
             </Form>
+
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header>
+                    <Modal.Title className="text-center">MotoZone</Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="text-center">New product added in showroom!</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="primary" onClick={handleClose}>Close</Button>
+                </Modal.Footer>
+            </Modal>
         </div>
     );
 };

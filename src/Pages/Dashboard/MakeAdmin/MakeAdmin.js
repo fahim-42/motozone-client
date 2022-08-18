@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 const MakeAdmin = () => {
+    //modal action
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     const [email, setEmail] = useState('');
 
     const handleOnBlur = e => {
@@ -26,7 +32,8 @@ const MakeAdmin = () => {
                 if (data.modifiedCount) {
                     console.log(data);
                     setEmail('');
-                    alert('New admin successfully created.');
+                    // alert('New admin successfully created.');
+                    setShow(true);
                 }
             })
         e.preventDefault();
@@ -43,6 +50,16 @@ const MakeAdmin = () => {
 
                 <Button className="mb-3" variant="warning" type="submit">Confirm Admin</Button>
             </Form>
+
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header>
+                    <Modal.Title className="text-center">MotoZone</Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="text-center">New admin added successfully !!!.</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="primary" onClick={handleClose}>Close</Button>
+                </Modal.Footer>
+            </Modal>
         </div>
     );
 };

@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import Button from 'react-bootstrap/Button'
 import Table from 'react-bootstrap/Table';
+import Modal from 'react-bootstrap/Modal';
 
 const ManageProducts = () => {
+    //modal action
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+
     const [manageProduct, setManageProduct] = useState([]);
 
     useEffect(() => {
@@ -23,7 +31,8 @@ const ManageProducts = () => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount) {
-                        alert('Order deleted successfully.');
+                        // alert('Product deleted successfully.');
+                        setShow(true);
 
                         const remainingOrders = manageProduct.filter(order => order._id !== id);
                         setManageProduct(remainingOrders);
@@ -41,21 +50,32 @@ const ManageProducts = () => {
                             <th>Id</th>
                             <th>Name</th>
                             <th>Price</th>
-                            <th>Modify</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
                             manageProduct.map((pd) => (<tr key={pd._id} className="text-center">
-                                <td>{pd._id}</td>
-                                <td>{pd.name}</td>
-                                <td>{pd.price}</td>
-                                <button onClick={() => handleDelete(pd._id)} className="bg-danger text-white btn btn-danger py-1 my-1">Delete</button>
+                                <td><img className="img-fluid align-middle text-center" width="120" src={`data:image/*;base64,${pd.image}`} alt="not found" /></td>
+                                <td className="align-middle text-center">{pd.name}</td>
+                                <td className="align-middle text-center">{pd.price}</td>
+                                <td className="align-middle text-center">
+                                    <button onClick={() => handleDelete(pd._id)} className="bg-danger text-white btn btn-danger py-1 my-1">Delete</button>
+                                </td>
                             </tr>))
                         }
                     </tbody>
                 </Table>
             </div>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title className="text-center">MotoZone</Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="text-center">Product deleted successfully.</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="primary" onClick={handleClose}>Close</Button>
+                </Modal.Footer>
+            </Modal>
         </div>
     );
 };

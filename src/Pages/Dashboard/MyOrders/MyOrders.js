@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import Table from 'react-bootstrap/Table';
 import useAuth from '../../../hooks/useAuth';
 
 const MyOrders = () => {
+    //modal action
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+
     const { user } = useAuth();
     const email = user.email;
 
@@ -28,7 +36,8 @@ const MyOrders = () => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount) {
-                        alert('Order deleted successfully.');
+                        // alert('Order deleted successfully.');
+                        setShow(true)
 
                         const remainingOrders = myOrder.filter(order => order._id !== id);
                         setMyOrder(remainingOrders);
@@ -48,23 +57,34 @@ const MyOrders = () => {
                             <th>Product</th>
                             <th>Price</th>
                             <th>Address</th>
-                            <th>Modify</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
                             myOrder.map((order) => (<tr key={order._id} className="text-center">
-                                <td>{order.email}</td>
-                                <td>{order.name}</td>
-                                <td>{order.product}</td>
-                                <td>{order.price}</td>
-                                <td>{order.address}</td>
-                                <button onClick={() => handleDelete(order._id)} className="bg-danger text-white btn btn-danger py-1 my-1">Delete</button>
+                                <td className="align-middle text-center">{order.email}</td>
+                                <td className="align-middle text-center">{order.name}</td>
+                                <td className="align-middle text-center">{order.product}</td>
+                                <td className="align-middle text-center">{order.price}</td>
+                                <td className="align-middle text-center">{order.address}</td>
+                                <td className="align-middle text-center">
+                                    <button onClick={() => handleDelete(order._id)} className="bg-danger text-white btn btn-danger py-1 my-1">Delete</button>
+                                </td>
                             </tr>))
                         }
                     </tbody>
                 </Table>
             </div>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title className="text-center">MotoZone</Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="text-center">Order deleted successfully.</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="primary" onClick={handleClose}>Close</Button>
+                </Modal.Footer>
+            </Modal>
         </div>
     );
 };

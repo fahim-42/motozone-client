@@ -51,14 +51,13 @@ const Purchase = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
-                    alert('Purchase order submitted.');
                     e.target.reset();
                 }
             })
 
         e.preventDefault();
     }
-    
+
     //animation
     useEffect(() => {
         AOS.init();
@@ -103,7 +102,7 @@ const Purchase = () => {
                     <Form.Label>Selected Product Price:</Form.Label>
                     <Form.Control
                         disabled
-                        type="text"
+                        type="number"
                         ref={priceRef}
                         value={details[0]?.price}
                         placeholder="Price of the product" />

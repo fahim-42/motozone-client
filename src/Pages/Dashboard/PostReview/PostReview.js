@@ -1,9 +1,16 @@
-import React, { useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import useAuth from '../../../hooks/useAuth';
 
 const PostReview = () => {
+    //modal action
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+
     const { user } = useAuth();
 
     const emailRef = useRef();
@@ -27,7 +34,8 @@ const PostReview = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
-                    alert('Review Posted Successfully.');
+                    // alert('Review Posted Successfully.');
+                    setShow(true);
                     e.target.reset();
                 }
             })
@@ -53,10 +61,20 @@ const PostReview = () => {
                     <Form.Label>Write a review :</Form.Label>
                     <Form.Control
                         ref={reviewRef}
-                        placeholder="How was your experience !?" as="textarea" rows={3} required />
+                        placeholder="How was your experience !?" as="textarea" rows={6} required />
                 </Form.Group>
                 <Button variant="warning" type="submit">Submit</Button>
             </Form>
+
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header>
+                    <Modal.Title className="text-center">MotoZone</Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="text-center">Review Posted Successfully.</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="primary" onClick={handleClose}>Close</Button>
+                </Modal.Footer>
+            </Modal>
         </div>
     );
 };

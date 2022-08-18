@@ -28,8 +28,8 @@ const Showroom = () => {
             <div className="showroom-container mx-3 pb-4">
                 {
                     product?.map((pd) => (
-                        <div key={pd._id} className="showroom bg-white mx-3 mb-3 rounded-3 shadow-lg" data-aos="fade-up" data-aos-duration="2000">
-                            <img className="w-80 border border-0 px-4" src={`data:image/png;base64,${pd.image}`} alt="not found" />
+                        <div key={pd._id} className="showroom bg-white mx-3 mb-3 rounded-3 shadow-lg" data-aos="fade-up" data-aos-duration="500">
+                            <img className="w-80 border border-0 px-4" src={`data:image/*;base64,${pd.image}`} alt="not found" />
                             <h2 className="text-center fw-bold fst-italic m-3">{pd.name}</h2>
                             <p className="px-4 mb-3">{pd.description}</p>
                             <h5 className="px-4 mb-3 fw-bold fst-italic mb-3">Price: {pd.price}tk</h5>

@@ -1,6 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import useAuth from '../../../hooks/useAuth';
 
 // animation
@@ -12,6 +13,11 @@ const About = () => {
     useEffect(() => {
         AOS.init();
     })
+
+    //modal action
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     const { user } = useAuth();
 
@@ -36,7 +42,8 @@ const About = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
-                    alert('Registered Successfully! We will be in touch with you soon.');
+                    // alert('Registered Successfully! We will be in touch with you soon.');
+                    setShow(true);
                     e.target.reset();
                 }
             })
@@ -91,6 +98,16 @@ const About = () => {
                         </Form.Group>
                         <Button className="mb-3" variant="warning" type="submit">Submit</Button>
                     </Form>
+
+                    <Modal show={show} onHide={handleClose}>
+                        <Modal.Header>
+                            <Modal.Title className="text-center">MotoZone</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body className="text-center">Registered Successfully! We will be in touch with you soon.</Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="primary" onClick={handleClose}>Close</Button>
+                        </Modal.Footer>
+                    </Modal>
                 </div>
             </div>
         </div>

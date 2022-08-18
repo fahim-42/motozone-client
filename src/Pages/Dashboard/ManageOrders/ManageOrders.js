@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
+import Modal from 'react-bootstrap/Modal';
 import useAuth from '../../../hooks/useAuth';
 
 const ManageOrders = () => {
+    //modal action
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+
     const { user } = useAuth();
     const [status, setStatus] = useState([]);
     const [manageOrder, setManageOrder] = useState([]);
@@ -26,6 +34,8 @@ const ManageOrders = () => {
             .then(data => {
                 if (data.modifiedCount) {
                     alert('Order Status updated');
+                    
+                    window.location.reload();
                     /* const remainingOrders = manageOrder.filter(order => order.status !== 'Pending');
                     setManageOrder(remainingOrders); */
                 }
@@ -51,7 +61,8 @@ const ManageOrders = () => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount) {
-                        alert('Order deleted successfully.');
+                        // alert('Order deleted successfully.');
+                        setShow(true);
 
                         const remainingOrders = manageOrder.filter(order => order._id !== id);
                         setManageOrder(remainingOrders);
@@ -72,27 +83,36 @@ const ManageOrders = () => {
                             <th>Price</th>
                             <th>Address</th>
                             <th>Status</th>
-                            <th>Modify</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
                             manageOrder.map((order) => (<tr key={order._id} className="text-center">
-                                <td>{order.email}</td>
-                                <td>{order.name}</td>
-                                <td>{order.product}</td>
-                                <td>{order.price}</td>
-                                <td>{order.address}</td>
-                                <td>{order.status}</td>
-
-                                <button onClick={() => handleUpdate(order._id)} className="bg-success text-white btn btn-danger py-1 my-1">Update</button>
-
-                                <button onClick={() => handleDelete(order._id)} className="bg-danger text-white btn btn-danger ms-2 py-1 my-1">Delete</button>
+                                <td className="align-middle text-center">{order.email}</td>
+                                <td className="align-middle text-center">{order.name}</td>
+                                <td className="align-middle text-center">{order.product}</td>
+                                <td className="align-middle text-center">{order.price}</td>
+                                <td className="align-middle text-center">{order.address}</td>
+                                <td className="align-middle text-center">{order.status}</td>
+                                <td>
+                                    <button onClick={() => handleUpdate(order._id)} className="bg-success text-white btn btn-success py-1 my-1">Update Status</button>
+                                    <button onClick={() => handleDelete(order._id)} className="bg-danger text-white btn btn-danger ms-2 py-1 my-1">Delete</button>
+                                </td>
                             </tr>))
                         }
                     </tbody>
                 </Table>
             </div>
+            <Modal show={show} onHide={handleClose}>
+                        <Modal.Header closeButton>
+                            <Modal.Title className="text-center">MotoZone</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body className="text-center">Order deleted successfully.</Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="primary" onClick={handleClose}>Close</Button>
+                        </Modal.Footer>
+                    </Modal>
         </div>
     );
 };
