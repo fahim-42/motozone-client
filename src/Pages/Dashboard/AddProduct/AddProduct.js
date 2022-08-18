@@ -8,7 +8,7 @@ const AddProduct = () => {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    // const handleShow = () => setShow(true);
 
     //catch data
     const [name, setName] = useState('');
@@ -90,7 +90,7 @@ const AddProduct = () => {
                         type="number"
                         // ref={priceRef}
                         onChange={e => setPrice(e.target.value)}
-                        placeholder="Ex: 1,30,000" />
+                        placeholder="Ex: 130000 without any separator or unit" />
                 </Form.Group>
                 <Form.Group className="mt-3 mb-3" controlId="formBasicProductPrice">
                     <Form.Label>Product description:</Form.Label>

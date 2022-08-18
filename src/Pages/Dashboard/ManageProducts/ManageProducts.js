@@ -68,7 +68,7 @@ const ManageProducts = () => {
                 </Table>
             </div>
             <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
+                <Modal.Header>
                     <Modal.Title className="text-center">MotoZone</Modal.Title>
                 </Modal.Header>
                 <Modal.Body className="text-center">Product deleted successfully.</Modal.Body>
