@@ -8,7 +8,7 @@ const ManageOrders = () => {
     //modal action
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    // const handleShow = () => setShow(true);
 
 
     const { user } = useAuth();
@@ -34,7 +34,7 @@ const ManageOrders = () => {
             .then(data => {
                 if (data.modifiedCount) {
                     alert('Order Status updated');
-                    
+
                     window.location.reload();
                     /* const remainingOrders = manageOrder.filter(order => order.status !== 'Pending');
                     setManageOrder(remainingOrders); */
@@ -96,8 +96,8 @@ const ManageOrders = () => {
                                 <td className="align-middle text-center">{order.address}</td>
                                 <td className="align-middle text-center">{order.status}</td>
                                 <td>
-                                    <button onClick={() => handleUpdate(order._id)} className="bg-success text-white btn btn-success py-1 my-1">Update Status</button>
-                                    <button onClick={() => handleDelete(order._id)} className="bg-danger text-white btn btn-danger ms-2 py-1 my-1">Delete</button>
+                                    <Button variant="outline-success" className="py-1 my-1" onClick={() => handleUpdate(order._id)}>Update Status</Button>
+                                    <Button variant="danger" className=" ms-3 py-1 my-1" onClick={() => handleDelete(order._id)}>Delete</Button>
                                 </td>
                             </tr>))
                         }
@@ -105,14 +105,14 @@ const ManageOrders = () => {
                 </Table>
             </div>
             <Modal show={show} onHide={handleClose}>
-                        <Modal.Header closeButton>
-                            <Modal.Title className="text-center">MotoZone</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body className="text-center">Order deleted successfully.</Modal.Body>
-                        <Modal.Footer>
-                            <Button variant="primary" onClick={handleClose}>Close</Button>
-                        </Modal.Footer>
-                    </Modal>
+                <Modal.Header closeButton>
+                    <Modal.Title className="text-center">MotoZone</Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="text-center">Order deleted successfully.</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="primary" onClick={handleClose}>Close</Button>
+                </Modal.Footer>
+            </Modal>
         </div>
     );
 };

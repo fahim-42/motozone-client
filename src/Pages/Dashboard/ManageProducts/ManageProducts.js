@@ -7,7 +7,7 @@ const ManageProducts = () => {
     //modal action
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    // const handleShow = () => setShow(true);
 
 
     const [manageProduct, setManageProduct] = useState([]);
@@ -60,7 +60,7 @@ const ManageProducts = () => {
                                 <td className="align-middle text-center">{pd.name}</td>
                                 <td className="align-middle text-center">{pd.price}</td>
                                 <td className="align-middle text-center">
-                                    <button onClick={() => handleDelete(pd._id)} className="bg-danger text-white btn btn-danger py-1 my-1">Delete</button>
+                                    <Button variant="danger" className=" ms-3 py-1 my-1" onClick={() => handleDelete(pd._id)}>Delete</Button>
                                 </td>
                             </tr>))
                         }

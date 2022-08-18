@@ -8,7 +8,7 @@ const MyOrders = () => {
     //modal action
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    // const handleShow = () => setShow(true);
 
 
     const { user } = useAuth();
@@ -45,6 +45,12 @@ const MyOrders = () => {
                 })
         }
     }
+
+    const handlePayment = id => {
+        console.log("Payment button working.")
+    }
+
+
     return (
         <div className="col-lg-12 col-sm-12">
             <h2 className="text-center fw-bold fst-italic my-3">My Orders</h2>
@@ -68,8 +74,10 @@ const MyOrders = () => {
                                 <td className="align-middle text-center">{order.product}</td>
                                 <td className="align-middle text-center">{order.price}</td>
                                 <td className="align-middle text-center">{order.address}</td>
+
                                 <td className="align-middle text-center">
-                                    <button onClick={() => handleDelete(order._id)} className="bg-danger text-white btn btn-danger py-1 my-1">Delete</button>
+                                    <Button variant="outline-primary" className="py-1 my-1" onClick={() => handlePayment(order._id)}>Buy Now</Button>
+                                    <Button variant="danger" className=" ms-3 py-1 my-1" onClick={() => handleDelete(order._id)}>Delete</Button>
                                 </td>
                             </tr>))
                         }
