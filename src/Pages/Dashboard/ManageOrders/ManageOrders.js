@@ -12,10 +12,10 @@ const ManageOrders = () => {
 
 
     const { user } = useAuth();
-    const [status, setStatus] = useState([]);
+    // const [status, setStatus] = useState([]);
     const [manageOrder, setManageOrder] = useState([]);
 
-    const handleUpdate = id => {
+    /*const handleUpdate = id => {
         const productStatus = 'Shipped';
         setStatus(productStatus);
 
@@ -36,11 +36,11 @@ const ManageOrders = () => {
                     alert('Order Status updated');
 
                     window.location.reload();
-                    /* const remainingOrders = manageOrder.filter(order => order.status !== 'Pending');
-                    setManageOrder(remainingOrders); */
+                    // const remainingOrders = manageOrder.filter(order => order.status !== 'Pending');
+                    // setManageOrder(remainingOrders);
                 }
             })
-    }
+    }*/
 
     useEffect(() => {
         // const url = 'http://localhost:3030/orders';
@@ -82,7 +82,7 @@ const ManageOrders = () => {
                             <th>Product</th>
                             <th>Price</th>
                             <th>Address</th>
-                            <th>Status</th>
+                            {/* <th>Status</th> */}
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -94,9 +94,9 @@ const ManageOrders = () => {
                                 <td className="align-middle text-center">{order.product}</td>
                                 <td className="align-middle text-center">{order.price}</td>
                                 <td className="align-middle text-center">{order.address}</td>
-                                <td className="align-middle text-center">{order.status}</td>
+                                {/* <td className="align-middle text-center">{order.status}</td> */}
                                 <td>
-                                    <Button variant="outline-success" className="py-1 my-1" onClick={() => handleUpdate(order._id)}>Update Status</Button>
+                                    {/* <Button variant="outline-success" className="py-1 my-1" onClick={() => handleUpdate(order._id)}>Update Status</Button> */}
                                     <Button variant="danger" className=" ms-3 py-1 my-1" onClick={() => handleDelete(order._id)}>Delete</Button>
                                 </td>
                             </tr>))

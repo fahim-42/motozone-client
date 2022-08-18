@@ -23,7 +23,7 @@ const Dashboard = () => {
                     <hr></hr>
                     <ul className="nav nav-pills flex-column mb-auto">
 
-                        <Nav.Link as={HashLink} className="nav-link link-dark" to={`${url}/payment`}>Payment</Nav.Link>
+                        {/* <Nav.Link as={HashLink} className="nav-link link-dark" to={`${url}/payment`}>Payment</Nav.Link> */}
 
                         {admin && <Nav.Link as={HashLink} className="nav-link link-dark" to={`${url}/admin`}>Make Admin</Nav.Link>}
 

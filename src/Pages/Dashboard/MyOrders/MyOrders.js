@@ -46,12 +46,6 @@ const MyOrders = () => {
                 })
         }
     }
-
-    const handlePayment = id => {
-        console.log("Payment button working.")
-    }
-
-
     return (
         <div className="col-lg-12 col-sm-12">
             <h2 className="text-center fw-bold fst-italic my-3">My Orders</h2>

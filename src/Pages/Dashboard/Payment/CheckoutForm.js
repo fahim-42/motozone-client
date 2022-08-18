@@ -4,7 +4,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
 const CheckoutForm = ({ orderPayment }) => {
-    const { name, email, price, address } = orderPayment;
+    const { _id, name, email, price, address } = orderPayment;
     // console.log({orderPayment});
 
 
@@ -18,7 +18,7 @@ const CheckoutForm = ({ orderPayment }) => {
 
     const [clientSecret, setClientSecret] = useState('');
     useEffect(() => {
-        // const url = 'http://localhost:3030/create-payment-intent';
+        // const url = 'https://localhost:3030/create-payment-intent';
         const url = 'https://glacial-castle-62029.herokuapp.com/create-payment-intent';
 
         fetch(url, {
@@ -53,10 +53,10 @@ const CheckoutForm = ({ orderPayment }) => {
         if (error) {
             setSuccess('');
             setError(error.message);
-            console.log('[error]', error);
+            // console.log('[error]', error);
         } else {
             setError('')
-            console.log('[PaymentMethod]', paymentMethod);
+            // console.log('[PaymentMethod]', paymentMethod);
         }
 
         //payment-intent
@@ -79,20 +79,42 @@ const CheckoutForm = ({ orderPayment }) => {
         }
         else {
             setError('');
-            console.log(paymentIntent);
+            // console.log(paymentIntent);
             setSuccess('Your payment processed successfully');
             setProcessing(false);
         }
+
+        //set to database
+        const payment = {
+            amount: paymentIntent.amount,
+            created: paymentIntent.created,
+            last4: paymentMethod.card.last4,
+            transaction: paymentIntent.client_secret.slice('_secret')[0]
+        }
+        // console.log(payment);
+
+        // const url = `http://localhost:3030/orders/${_id}`;
+        const url = `https://glacial-castle-62029.herokuapp.com/orders/${_id}`;
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(payment)
+        })
+            .then(res => res.json())
+            .then(data => console.log(data));
     }
     return (
-        <div className="bg-light text-center">
+        <div className="bg-light text-center col-lg-8 mx-auto border border-dark rounded mb-5">
             <form onSubmit={handleSubmit}>
-                <CardElement
+                <CardElement className="m-3"
                     options={{
                         style: {
                             base: {
-                                fontSize: '16px',
-                                color: '#424770',
+                                fontSize: '18px',
+                                // color: '#424770',
+                                color: '#000000',
                                 '::placeholder': {
                                     color: '#aab7c4',
                                 },
@@ -103,13 +125,14 @@ const CheckoutForm = ({ orderPayment }) => {
                         },
                     }}
                 />
-                {processing ? <Spinner animation="border" variant="primary" /> : <Button variant="primary" type="submit" disabled={!stripe}>Pay: {price} Tk</Button>}
+                <br />
+                {processing ? <Spinner animation="border" variant="primary" /> : <Button variant="primary" type="submit" className="m-3" disabled={!stripe || success}>Pay: {price} Tk</Button>}
             </form>
             {
-                error && <p className="bg-danger text-white text-center">{error}</p>
+                error && <p className="bg-danger text-white text-center fw-bold py-3 mb-0">{error}</p>
             }
             {
-                success && <p className="bg-success text-white text-center">{success}</p>
+                success && <p className="text-success text-center fw-bold py-3 mb-0">{success}</p>
             }
         </div>
     );
