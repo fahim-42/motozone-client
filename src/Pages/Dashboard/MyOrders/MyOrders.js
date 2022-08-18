@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Table from 'react-bootstrap/Table';
+import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 
 const MyOrders = () => {
@@ -63,6 +64,7 @@ const MyOrders = () => {
                             <th>Product</th>
                             <th>Price</th>
                             <th>Address</th>
+                            <th>Payment</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -76,8 +78,14 @@ const MyOrders = () => {
                                 <td className="align-middle text-center">{order.address}</td>
 
                                 <td className="align-middle text-center">
-                                    <Button variant="outline-primary" className="py-1 my-1" onClick={() => handlePayment(order._id)}>Buy Now</Button>
-                                    <Button variant="danger" className=" ms-3 py-1 my-1" onClick={() => handleDelete(order._id)}>Delete</Button>
+                                {order.payment ? 'Paid' :
+                                    <Link to={`/dashboard/payment/${order._id}`}>
+                                        <Button variant="primary">Pay</Button>
+                                    </Link>}
+                                </td>
+
+                                <td className="align-middle text-center">
+                                    <Button variant="danger" onClick={() => handleDelete(order._id)}>Delete</Button>
                                 </td>
                             </tr>))
                         }
