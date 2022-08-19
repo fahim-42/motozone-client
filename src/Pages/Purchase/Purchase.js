@@ -35,9 +35,10 @@ const Purchase = () => {
         const price = priceRef.current.value;
         const address = addressRef.current.value;
         const mobile = mobileRef.current.value;
-        const status = "Pending";
+        // const status = "Pending";
 
-        const purchaseInfo = { name, email, product, price, address, mobile, status };
+        const purchaseInfo = { name, email, product, price, address, mobile };
+        // const purchaseInfo = { name, email, product, price, address, mobile, status };
 
         // const url = 'http://localhost:3030/orders';
         const url = 'https://glacial-castle-62029.herokuapp.com/orders';
