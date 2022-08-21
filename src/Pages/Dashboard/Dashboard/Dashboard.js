@@ -1,6 +1,6 @@
 import React from 'react';
-import { Nav, Navbar } from 'react-bootstrap';
-import { Link, Switch, Route, useRouteMatch } from "react-router-dom";
+import Navbar from 'react-bootstrap/Navbar';
+import { Link, Switch, Route, useRouteMatch, NavLink } from "react-router-dom";
 import { HashLink } from 'react-router-hash-link';
 import useAuth from '../../../hooks/useAuth';
 import DashboardHome from '../DashboardHome/DashboardHome';
@@ -16,26 +16,28 @@ const Dashboard = () => {
     const { admin } = useAuth();
     let { path, url } = useRouteMatch();
     return (
-        <div className="d-flex">
+        <div className="d-flex" style={{minHeight: "80vh"}}>
             <div className="col-4 col-lg-2">
                 <div className="d-flex flex-column flex-shrink-0 p-3 bg-light h-100">
-                    <Navbar.Brand as={Link} className="d-flex align-items-center m-0 p-0 link-dark text-decoration-none fs-3" to={`${url}`}>Dashboard</Navbar.Brand>
+                    <Navbar.Brand as={Link} className="d-flex align-items-center m-0 p-0 link-dark text-decoration-none fs-3 mx-auto" to={`${url}`}>Dashboard</Navbar.Brand>
                     <hr></hr>
                     <ul className="nav nav-pills flex-column mb-auto">
 
-                        {/* <Nav.Link as={HashLink} className="nav-link link-dark" to={`${url}/payment`}>Payment</Nav.Link> */}
+                        {/* <NavLink as={HashLink} className="nav-link link-dark" to={`${url}/payment`}>Payment</NavLink> */}
 
-                        {admin && <Nav.Link as={HashLink} className="nav-link link-dark" to={`${url}/admin`}>Make Admin</Nav.Link>}
+                        {admin && <NavLink as={HashLink} className="nav-link link-dark" to={`${url}/admin`}>Make Admin</NavLink>}
 
-                        <Nav.Link as={HashLink} className="nav-link link-dark" to={`${url}/my_orders`}>My Orders</Nav.Link>
+                        {admin && <NavLink as={HashLink} className="nav-link link-dark" to={`${url}/add_product`}>Add Product</NavLink>}
 
-                        {admin && <Nav.Link as={HashLink} className="nav-link link-dark" to={`${url}/manage_orders`}>Manage Orders</Nav.Link>}
+                        {admin && <NavLink as={HashLink} className="nav-link link-dark" to={`${url}/manage_products`}>Manage Products</NavLink>}
 
-                        <Nav.Link as={HashLink} className="nav-link link-dark" to={`${url}/review`}>Review Product</Nav.Link>
+                        <NavLink as={HashLink} className="nav-link link-dark" to={`${url}/my_orders`}>My Orders</NavLink>                        
 
-                        {admin && <Nav.Link as={HashLink} className="nav-link link-dark" to={`${url}/manage_products`}>Manage Products</Nav.Link>}
+                        {admin && <NavLink as={HashLink} className="nav-link link-dark" to={`${url}/manage_orders`}>Manage Orders</NavLink>}
 
-                        {admin && <Nav.Link as={HashLink} className="nav-link link-dark" to={`${url}/add_product`}>Add Product</Nav.Link>}
+                        <NavLink as={HashLink} className="nav-link link-dark" to={`${url}/review`}>Post Review</NavLink>
+
+
                     </ul>
                 </div>
             </div>

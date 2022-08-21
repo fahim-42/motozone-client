@@ -1,0 +1,8 @@
+.stylish-button:hover {
+    background-color: black;
+    color: white;
+  }
+.active {
+    background-color: #0B5ED7;
+    color: white;
+}

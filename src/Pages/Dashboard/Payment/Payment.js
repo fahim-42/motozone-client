@@ -12,8 +12,8 @@ const Payment = () => {
 
     const [orderPayment, setOrderPayment] = useState({});
     useEffect(() => {
-        // const url = `https://localhost:3030/orders/${orderId}`;
-        const url = `https://glacial-castle-62029.herokuapp.com/orders/${orderId}`;
+        const url = `http://localhost:3030/orders/${orderId}`;
+        // const url = `https://glacial-castle-62029.herokuapp.com/orders/${orderId}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setOrderPayment(data));
@@ -23,11 +23,13 @@ const Payment = () => {
             {/* <img className="w-100" style={{height:"600px"}} src="https://i.ibb.co/RcWQxYp/coming-soon.jpg" alt="payment-system" /> */}
 
             <div className="mb-5">
-                <h4>Client Name: {orderPayment.name}</h4>
-                <h4>Email: {orderPayment.email}</h4>
+                <h4 className="text-primary fw-bold">Client Name: {orderPayment.name}</h4>
+                <h4 className="text-success fw-bold">Email: {orderPayment.email}</h4>
                 <br />
-                <h5>Product: {orderPayment.product}</h5>
-                <h6>Amount to be paid: {orderPayment.price} tk</h6>
+                <div className="text-danger fw-bold fst-italic">
+                    <h5>Product: {orderPayment.product}</h5>
+                    <h6>Amount to be paid: {orderPayment.price} tk</h6>
+                </div>
             </div>
 
             {orderPayment?.price && <Elements stripe={stripePromise} className="mb-5">

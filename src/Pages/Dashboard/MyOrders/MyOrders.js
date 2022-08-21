@@ -18,8 +18,8 @@ const MyOrders = () => {
     const [myOrder, setMyOrder] = useState([]);
 
     useEffect(() => {
-        // const url = `http://localhost:3030/orders?email=${email}`;
-        const url = `https://glacial-castle-62029.herokuapp.com/orders?email=${email}`;
+        const url = `http://localhost:3030/orders?email=${email}`;
+        // const url = `https://glacial-castle-62029.herokuapp.com/orders?email=${email}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setMyOrder(data.myOrderInfo))
@@ -29,8 +29,8 @@ const MyOrders = () => {
         const deleteConfirm = window.confirm('Want to delete ?');
         if (deleteConfirm) {
 
-            // const url = `http://localhost:3030/orders/${id}`;
-            const url = `https://glacial-castle-62029.herokuapp.com/orders/${id}`;
+            const url = `http://localhost:3030/orders/${id}`;
+            // const url = `https://glacial-castle-62029.herokuapp.com/orders/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })

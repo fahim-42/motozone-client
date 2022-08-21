@@ -1,4 +1,5 @@
-import React, { useState, useRef } from 'react';
+// import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal';
@@ -39,8 +40,8 @@ const AddProduct = () => {
         formData.append('price', price);
         formData.append('description', description);
 
-        // const url = 'http://localhost:3030/products';
-        const url = 'https://glacial-castle-62029.herokuapp.com/products';
+        const url = 'http://localhost:3030/products';
+        // const url = 'https://glacial-castle-62029.herokuapp.com/products';
 
         /*fetch(url, {
             method: 'POST',

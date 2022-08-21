@@ -8,8 +8,8 @@ import 'aos/dist/aos.css';
 const Reviews = () => {
     const [review, setReview] = useState([]);
     useEffect(() => {
-        // const url = 'http://localhost:3030/reviews';
-        const url = 'https://glacial-castle-62029.herokuapp.com/reviews';
+        const url = 'http://localhost:3030/reviews';
+        // const url = 'https://glacial-castle-62029.herokuapp.com/reviews';
         fetch(url)
             .then(res => res.json())
             .then(data => setReview(data));

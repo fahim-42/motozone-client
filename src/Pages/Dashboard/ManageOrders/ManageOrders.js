@@ -43,8 +43,8 @@ const ManageOrders = () => {
     }*/
 
     useEffect(() => {
-        // const url = 'http://localhost:3030/orders';
-        const url = 'https://glacial-castle-62029.herokuapp.com/orders';
+        const url = 'http://localhost:3030/orders';
+        // const url = 'https://glacial-castle-62029.herokuapp.com/orders';
         fetch(url)
             .then(res => res.json())
             .then(data => setManageOrder(data.orders))
@@ -53,8 +53,8 @@ const ManageOrders = () => {
     const handleDelete = id => {
         const deleteConfirm = window.confirm('Want to delete ?');
         if (deleteConfirm) {
-            // const url = `http://localhost:3030/orders/${id}`;
-            const url = `https://glacial-castle-62029.herokuapp.com/orders/${id}`;
+            const url = `http://localhost:3030/orders/${id}`;
+            // const url = `https://glacial-castle-62029.herokuapp.com/orders/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })

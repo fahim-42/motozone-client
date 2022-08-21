@@ -14,8 +14,8 @@ const Purchase = () => {
 
     const [details, setDetails] = useState([]);
     useEffect(() => {
-        // const url = `http://localhost:3030/products?pdt=${id}`;
-        const url = `https://glacial-castle-62029.herokuapp.com/products?pdt=${id}`;
+        const url = `http://localhost:3030/products?pdt=${id}`;
+        // const url = `https://glacial-castle-62029.herokuapp.com/products?pdt=${id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setDetails(data.queryProductInfo));
@@ -40,8 +40,8 @@ const Purchase = () => {
         const purchaseInfo = { name, email, product, price, address, mobile };
         // const purchaseInfo = { name, email, product, price, address, mobile, status };
 
-        // const url = 'http://localhost:3030/orders';
-        const url = 'https://glacial-castle-62029.herokuapp.com/orders';
+        const url = 'http://localhost:3030/orders';
+        // const url = 'https://glacial-castle-62029.herokuapp.com/orders';
         fetch(url, {
             method: 'POST',
             headers: {
