@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button'
 import { useParams } from 'react-router';
+import Modal from 'react-bootstrap/Modal';
 import useAuth from './../../hooks/useAuth';
 
 // animation
@@ -9,13 +10,19 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 const Purchase = () => {
+    //modal actions
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    // const handleShow = () => setShow(true);
+
     const { id } = useParams();
     const { user } = useAuth();
 
     const [details, setDetails] = useState([]);
     useEffect(() => {
-        const url = `http://localhost:3030/products?pdt=${id}`;
-        // const url = `https://glacial-castle-62029.herokuapp.com/products?pdt=${id}`;
+        // const url = `http://localhost:3030/products?pdt=${id}`;
+        const url = `https://glacial-castle-62029.herokuapp.com/products?pdt=${id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setDetails(data.queryProductInfo));
@@ -40,8 +47,8 @@ const Purchase = () => {
         const purchaseInfo = { name, email, product, price, address, mobile };
         // const purchaseInfo = { name, email, product, price, address, mobile, status };
 
-        const url = 'http://localhost:3030/orders';
-        // const url = 'https://glacial-castle-62029.herokuapp.com/orders';
+        // const url = 'http://localhost:3030/orders';
+        const url = 'https://glacial-castle-62029.herokuapp.com/orders';
         fetch(url, {
             method: 'POST',
             headers: {
@@ -52,6 +59,8 @@ const Purchase = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
+                    // alert('Order Placed Successfully !!!');
+                    setShow(true);
                     e.target.reset();
                 }
             })
@@ -128,6 +137,16 @@ const Purchase = () => {
                 </Form.Group>
                 <Button variant="warning" type="submit">Buy Now</Button>
             </Form>
+
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header>
+                    <Modal.Title className="text-center">MotoZone</Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="text-center">Order Placed Successfully !!!</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="primary" onClick={handleClose}>Close</Button>
+                </Modal.Footer>
+            </Modal>
         </div>
     )
 };

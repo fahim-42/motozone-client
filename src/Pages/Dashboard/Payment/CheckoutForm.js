@@ -18,8 +18,8 @@ const CheckoutForm = ({ orderPayment }) => {
 
     const [clientSecret, setClientSecret] = useState('');
     useEffect(() => {
-        const url = 'http://localhost:3030/create-payment-intent';
-        // const url = 'https://glacial-castle-62029.herokuapp.com/create-payment-intent';
+        // const url = 'http://localhost:3030/create-payment-intent';
+        const url = 'https://glacial-castle-62029.herokuapp.com/create-payment-intent';
 
         fetch(url, {
             method: 'POST',
@@ -93,8 +93,8 @@ const CheckoutForm = ({ orderPayment }) => {
         }
         // console.log(payment);
 
-        const url = `http://localhost:3030/orders/${_id}`;
-        // const url = `https://glacial-castle-62029.herokuapp.com/orders/${_id}`;
+        // const url = `http://localhost:3030/orders/${_id}`;
+        const url = `https://glacial-castle-62029.herokuapp.com/orders/${_id}`;
         fetch(url, {
             method: 'PUT',
             headers: {

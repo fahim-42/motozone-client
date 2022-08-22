@@ -13,8 +13,8 @@ const ManageProducts = () => {
     const [manageProduct, setManageProduct] = useState([]);
 
     useEffect(() => {
-        const url = 'http://localhost:3030/products';
-        // const url = 'https://glacial-castle-62029.herokuapp.com/products';
+        // const url = 'http://localhost:3030/products';
+        const url = 'https://glacial-castle-62029.herokuapp.com/products';
         fetch(url)
             .then(res => res.json())
             .then(data => setManageProduct(data.products))
@@ -23,8 +23,8 @@ const ManageProducts = () => {
     const handleDelete = id => {
         const deleteConfirm = window.confirm('Want to delete ?');
         if (deleteConfirm) {
-            const url = `http://localhost:3030/products/${id}`;
-            // const url = `https://glacial-castle-62029.herokuapp.com/products/${id}`;
+            // const url = `http://localhost:3030/products/${id}`;
+            const url = `https://glacial-castle-62029.herokuapp.com/products/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })

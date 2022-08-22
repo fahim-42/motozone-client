@@ -30,8 +30,8 @@ const About = () => {
 
         const subscribe = { email, text };
 
-        const url = 'http://localhost:3030/subscribe';
-        // const url = 'https://glacial-castle-62029.herokuapp.com/subscribe';
+        // const url = 'http://localhost:3030/subscribe';
+        const url = 'https://glacial-castle-62029.herokuapp.com/subscribe';
         fetch(url, {
             method: 'POST',
             headers: {

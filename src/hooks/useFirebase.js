@@ -14,8 +14,8 @@ const useFirebase = () => {
 
     const [admin, setAdmin] = useState(false);
     useEffect(() => {
-        const url = `http://localhost:3030/users/${user.email}`;
-        // const url = `https://glacial-castle-62029.herokuapp.com/users/${user.email}`;
+        // const url = `http://localhost:3030/users/${user.email}`;
+        const url = `https://glacial-castle-62029.herokuapp.com/users/${user.email}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setAdmin(data.admin))
@@ -112,8 +112,8 @@ const useFirebase = () => {
     const saveUser = (email, displayName, method) => {
         const user = { email, displayName };
 
-        const url = 'http://localhost:3030/users';
-        // const url = 'https://glacial-castle-62029.herokuapp.com/users';
+        // const url = 'http://localhost:3030/users';
+        const url = 'https://glacial-castle-62029.herokuapp.com/users';
         fetch(url, {
             method: method,
             headers: {

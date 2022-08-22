@@ -18,8 +18,8 @@ const MakeAdmin = () => {
     const handleAdminSubmit = e => {
         const user = { email };
 
-        const url = 'http://localhost:3030/users/admin';
-        // const url = 'https://glacial-castle-62029.herokuapp.com/users/admin';
+        // const url = 'http://localhost:3030/users/admin';
+        const url = 'https://glacial-castle-62029.herokuapp.com/users/admin';
         fetch(url, {
             method: 'PUT',
             headers: {

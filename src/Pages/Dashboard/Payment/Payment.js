@@ -12,8 +12,8 @@ const Payment = () => {
 
     const [orderPayment, setOrderPayment] = useState({});
     useEffect(() => {
-        const url = `http://localhost:3030/orders/${orderId}`;
-        // const url = `https://glacial-castle-62029.herokuapp.com/orders/${orderId}`;
+        // const url = `http://localhost:3030/orders/${orderId}`;
+        const url = `https://glacial-castle-62029.herokuapp.com/orders/${orderId}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setOrderPayment(data));
